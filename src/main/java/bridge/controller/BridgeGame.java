@@ -23,6 +23,7 @@ public class BridgeGame {
     }
 
     public void setUp() {
+        inputView.guidGameStartMessage();
         String rawBridgeSizeInput = inputView.guideBridgeSizeInput();
         int bridgeSize = inputView.readBridgeSize(rawBridgeSizeInput);
     }

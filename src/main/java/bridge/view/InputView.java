@@ -13,10 +13,15 @@ public class InputView {
      * 다리의 길이를 입력받는다.
      */
 
+    public void guidGameStartMessage() {
+        System.out.println(InputMessageType.INPUT_GAME_START.getMessage());
+    }
+
     public String guideBridgeSizeInput() {
         System.out.println(InputMessageType.INPUT_BRIDGE_LENGTH.getMessage());
         return Console.readLine();
     }
+
     public int readBridgeSize(String rawBridgeSizeInput) {
         int bridgeSize = GameValidator.checkedBridgeLengthFormat(rawBridgeSizeInput);
         GameValidator.checkedBridgeLength(bridgeSize);
