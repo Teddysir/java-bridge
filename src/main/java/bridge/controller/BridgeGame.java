@@ -1,12 +1,31 @@
 package bridge.controller;
 
+import bridge.BridgeNumberGenerator;
+import bridge.BridgeRandomNumberGenerator;
+import bridge.model.BridgeMaker;
 import bridge.utils.GameValidator;
+import bridge.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
+
+    private final InputView inputView = new InputView();
+    private final BridgeNumberGenerator bridgeNumberGenerator = new BridgeRandomNumberGenerator();
+    private final BridgeMaker bridgeMaker = new BridgeMaker(bridgeNumberGenerator);
+
+    public void start() {
+        setUp();
+        move();
+        retry();
+    }
+
+    public void setUp() {
+        String rawBridgeSizeInput = inputView.guideBridgeSizeInput();
+        int bridgeSize = inputView.readBridgeSize(rawBridgeSizeInput);
+    }
 
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드

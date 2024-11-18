@@ -8,6 +8,6 @@ public class Application {
 
         final BridgeGame bridgeGame = new BridgeGame();
 
-        bridgeGame.move();
+        bridgeGame.start();
     }
 }
