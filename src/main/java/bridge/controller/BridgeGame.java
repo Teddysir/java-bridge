@@ -6,6 +6,7 @@ import bridge.model.BridgeChecker;
 import bridge.model.BridgeMaker;
 import bridge.view.InputView;
 
+import java.util.IllegalFormatException;
 import java.util.List;
 
 /**
@@ -19,8 +20,12 @@ public class BridgeGame {
     private final BridgeMaker bridgeMaker = new BridgeMaker(bridgeNumberGenerator);
 
     public void start() {
-        bridgeCheck();
-        retry();
+        try {
+            bridgeCheck();
+            retry();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void bridgeCheck() {

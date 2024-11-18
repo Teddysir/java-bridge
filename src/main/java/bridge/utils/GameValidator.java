@@ -15,7 +15,7 @@ public class GameValidator {
     public static int checkedBridgeLengthFormat(String rawBridgeLength) {
         try {
             return Integer.parseInt(rawBridgeLength);
-        } catch (IllegalFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessageType.ERROR_INVALID_BRIDGE_LENGTH_FORMAT.getMessage());
         }
     }
