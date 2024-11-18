@@ -26,4 +26,10 @@ public class GameValidator {
         }
     }
 
+    public static void checkedInputRestartCommand(String clientInput) {
+        if (!clientInput.equals("R") && !clientInput.equals("Q")) {
+            throw new IllegalArgumentException(ErrorMessageType.ERROR_INVALID_RESTART_COMMAND.getMessage());
+        }
+    }
+
 }
