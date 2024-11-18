@@ -3,9 +3,7 @@ package bridge.controller;
 import bridge.BridgeNumberGenerator;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.model.BridgeMaker;
-import bridge.utils.GameValidator;
 import bridge.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -26,6 +24,8 @@ public class BridgeGame {
         inputView.guidGameStartMessage();
         String rawBridgeSizeInput = inputView.guideBridgeSizeInput();
         int bridgeSize = inputView.readBridgeSize(rawBridgeSizeInput);
+
+        bridgeMaker.makeBridge(bridgeSize);
     }
 
     /**
