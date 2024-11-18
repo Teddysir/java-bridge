@@ -1,5 +1,7 @@
 package bridge.model;
 
+import bridge.view.OutputView;
+
 import java.util.List;
 
 public class BridgeChecker {
@@ -21,7 +23,7 @@ public class BridgeChecker {
                 return sbUp;
             }
             if (!answer.equals(movingCommand)){
-                sbUp.append(" X |");
+                sbUp.append(" X ]");
                 return sbUp;
             }
             sbUp.append("   |");
@@ -66,7 +68,7 @@ public class BridgeChecker {
                 return sbDown;
             }
             if (!answer.equals(movingCommand)){
-                sbDown.append(" X |");
+                sbDown.append(" X ]");
                 return sbDown;
             }
             sbDown.append("   |");

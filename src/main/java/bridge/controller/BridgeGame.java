@@ -4,7 +4,9 @@ import bridge.BridgeNumberGenerator;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.model.BridgeChecker;
 import bridge.model.BridgeMaker;
+import bridge.utils.GameValidator;
 import bridge.view.InputView;
+import bridge.view.OutputView;
 
 import java.util.IllegalFormatException;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class BridgeGame {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final BridgeChecker bridgeChecker = new BridgeChecker();
     private final BridgeNumberGenerator bridgeNumberGenerator = new BridgeRandomNumberGenerator();
     private final BridgeMaker bridgeMaker = new BridgeMaker(bridgeNumberGenerator);
@@ -22,7 +25,6 @@ public class BridgeGame {
     public void start() {
         try {
             bridgeCheck();
-            retry();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -48,6 +50,16 @@ public class BridgeGame {
             String movingCommand = move();
             answerSbUp.append(bridgeChecker.guessUpBridge(answerBridge, movingCommand, checkIndex));
             answerSbDown.append(bridgeChecker.guessDownBridge(answerBridge, movingCommand, checkIndex));
+            if (answerSbUp.toString().contains("X") || answerSbDown.toString().contains("X")) {
+                System.out.println(answerSbUp);
+                System.out.println(answerSbDown);
+                String retryAnswer = outputView.restartMessage();
+                GameValidator.checkedInputRestartCommand(retryAnswer);
+                if(retryAnswer.equals("R")) {
+                    retry(answerBridge);
+                }
+                return;
+            }
             System.out.println(answerSbUp);
             System.out.println(answerSbDown);
         }
@@ -68,6 +80,7 @@ public class BridgeGame {
      * <p>
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void retry() {
+    public void retry(List<String> answerBridge) {
+        game(answerBridge);
     }
 }
