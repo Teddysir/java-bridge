@@ -32,8 +32,14 @@ public class InputView {
     /**
      * 사용자가 이동할 칸을 입력받는다.
      */
+    public void guideMovingCommand() {
+        System.out.println(InputMessageType.INPUT_MOVE_COMMAND.getMessage());
+    }
+
     public String readMoving() {
-        return null;
+        String rawMovingCommand = Console.readLine();
+        GameValidator.checkedInputMoveCommand(rawMovingCommand);
+        return rawMovingCommand;
     }
 
     /**
