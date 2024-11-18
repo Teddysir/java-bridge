@@ -20,4 +20,10 @@ public class GameValidator {
         }
     }
 
+    public static void checkedInputMoveCommand(String clientInput) {
+        if (!clientInput.equals("U") && !clientInput.equals("D")) {
+            throw new IllegalArgumentException(ErrorMessageType.ERROR_INVALID_MOVE_COMMAND.getMessage());
+        }
+    }
+
 }
